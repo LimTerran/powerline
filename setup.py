@@ -4,13 +4,13 @@ from __future__ import (unicode_literals, division, absolute_import, print_funct
 
 import os
 import sys
-import subprocess
 import logging
 import shlex
+import subprocess
 
-from traceback import print_exc
 from setuptools import setup, find_packages
 
+from powerline.version import get_version
 
 CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
 try:
@@ -57,17 +57,6 @@ except Exception as e:
 else:
 	can_use_scripts = False
 
-
-def get_version():
-	base_version = '2.7'
-	base_version += '.dev9999'
-	try:
-		return base_version + '+git.' + str(subprocess.check_output(['git', 'rev-parse', 'HEAD']).strip())
-	except Exception:
-		print_exc()
-		return base_version
-
-
 setup(
 	name='powerline-status',
 	version=get_version(),
@@ -82,11 +71,10 @@ setup(
 		'Natural Language :: English',
 		'Operating System :: Microsoft :: Windows',
 		'Operating System :: POSIX',
-		'Programming Language :: Python :: 2.6',
-		'Programming Language :: Python :: 2.7',
-		'Programming Language :: Python :: 3.2',
-		'Programming Language :: Python :: 3.3',
 		'Programming Language :: Python :: 3.4',
+		'Programming Language :: Python :: 3.5',
+		'Programming Language :: Python :: 3.6',
+		'Programming Language :: Python :: 3.7',
 		'Programming Language :: Python :: Implementation :: CPython',
 		'Programming Language :: Python :: Implementation :: PyPy',
 	],
